@@ -1,0 +1,55 @@
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html lang="en">
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Rental cars between individuals.">
+    <meta name="author" content="Délita Makanda">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title class="title">Augui Car Rental - {% block title %}{% endblock %}{% block head_title %}{% endblock %}</title>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+    <link href="{% static 'styles/app.css' %}" rel="stylesheet" />
+  </head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <ul class="header-menu-list">
+                <li class="header-menu-list-item logo"><a href="{% url 'cars' %}" class="brand">{% trans 'Augui Car' %} {% trans 'Rental (Home)' %}</a></li>
+                <li class="header-menu-list-item"><a href="{% url 'pricing' %}">{% trans 'Pricing' %}</a></li>
+                <li class="header-menu-list-item"><a href="{% url 'about' %}">{% trans 'About' %}</a></li>
+                <li class="header-menu-list-item"><a href="{% url 'contact' %}">{% trans 'Contact' %}</a></li>
+                {% if request.user.is_authenticated %}
+                <li class="header-menu-list-item menu-hover"><a href="#" title="{% trans 'Dashboard' %} - {{ user.username }}"><i class="icon ion-person"></i></a>
+                    <ul class="submenu-list">
+                        <li class="submenu-list-item"><a href="{% url 'post_a_car' %}">{% trans 'Add a vehicle' %}</a></li>
+                        <li class="submenu-list-item"><a href="{% url 'dashboard' %}">{% trans 'Settings' %}</a></li>
+                        <li class="submenu-list-item"><a href="{% url 'account_logout' %}">{% trans 'Logout' %}</a></li>
+                    <ul>
+                </li>
+                {% else %}
+                <li class="header-menu-list-item"><a href="{% url 'account_login' %}">{% trans 'Sign in' %}</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="body">
+        <div class="container">
+            {% if messages %}
+            <ul class="alert-container">
+                {% for message in messages %}
+                <li{% if message.tags %} class="alert-messages alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'scripts/libs/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scripts/app.js' %}"></script>
+</body>
+
+</html>

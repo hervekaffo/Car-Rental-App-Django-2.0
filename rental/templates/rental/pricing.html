@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% load pagination_tags %}
+{% block title %}{% trans 'Pricing' %}{% endblock %}
+
+{% block content %}
+<h2>{% trans 'Pricing' %}</h2>
+
+<ul class="menu-list-cars">
+    {% for car in cars %}
+        <li class="menu-list-cars-item">
+            <a href="{% url 'car-details' id=car.id %}" class="cars">
+                <div class="cars-reference">
+                    {% if car.image %}
+                    <img src="{{ car.image.url|default_if_none:'#' }}" class="image" alt="{{ car.name }}"/>
+                    {% else %}
+                    <img src="{% static 'images/none.png' %}" class="image" alt="{{ car.name }}" />
+                    {% endif %}
+                </div>
+                <div class="cars-reference cars-description">
+                    <div class="car-name">{{ car.name }}</div>
+                    <div class="cars-meta">{{ car.get_car_models_display }} &bull; <h2> ${{ car.daily_rent|floatformat:2 }} / {% trans 'per days' %} </h2> &bull; {{ car.owner }}</div>
+                </div>
+                <div class="cars-reference">
+                    <div class="cars-location">{{ car.localization }}</div>
+                </div>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
