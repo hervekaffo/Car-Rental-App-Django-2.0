@@ -145,10 +145,10 @@ DEFAULT_FROM_EMAIL = 'no-reply@mail.com'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'kaffo80@gmail.com'
+EMAIL_HOST_USER = 'xxx@gmail.com'
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'kaffo80@gmail.com'
+DEFAULT_FROM_EMAIL = 'xxx@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Dango Allauth settings
