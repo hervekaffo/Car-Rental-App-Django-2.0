@@ -1,4 +1,4 @@
-# final-project herve Taning Kaffo
+# final-project herve Kaffo
 - This is a car renting Application Implemented using Python (Django), Sqlite3, JavaScripcrip(Jquery) where a user can rent or post a car for renting.
 - Working Functionalities 
 	1. 	A new user Can resister to the application by creating an account 
