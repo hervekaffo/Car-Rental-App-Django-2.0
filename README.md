@@ -30,4 +30,4 @@
   3. gunicorn activcar.wsgi:application --preload
   
   
-  Thanks to the CS-50's Teaching Staff for all the knowledges they gave me absolutely a great plus om how I will develop application 
+  Thanks to the CS-50's Teaching Staff for all their help and devotion to help 
